@@ -6,9 +6,11 @@
 class PageCommentsNotificationsExtension extends SiteTreeExtension {
 	
 	public function updateSettingsFields(FieldList $fields) {
-		$fields->addFieldToTab(
-			'Root.Settings', 
-			new EmailField('CommentNotificationEmail', 'Comment Notification Email', null, 255)
-		);
+		if(CommentsNotifications::configure_page()) {
+			$fields->addFieldToTab(
+				'Root.Settings', 
+				new EmailField('CommentNotificationEmail', 'Comment Notification Email', null, 255)
+			);
+		}
 	}
 }

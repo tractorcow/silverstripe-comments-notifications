@@ -18,24 +18,25 @@ class CommentingControllerNotificationsExtension extends Extension {
 		if(empty($recipient)) return;
 		
 		// Check moderation status
-		if(CommentsNotifications::$only_unmoderated && $comment->Moderated) return;
+		if(Config::inst()->get('CommentsNotifications', 'only_unmoderated') && $comment->Moderated) return;
 		
 		// Generate email
 		$email = new Email();
-		$email->setSubject(CommentsNotifications::$email_subject);
+		$email->setSubject(Config::inst()->get('CommentsNotifications', 'email_subject'));
 		$email->setTo($recipient);
-		$email->setTemplate(CommentsNotifications::$email_template);
+		$email->setTemplate(Config::inst()->get('CommentsNotifications', 'email_template'));
 		$email->populateTemplate($comment);
 		
 		// Corretly set sender and from as per email convention
+		$sender = Config::inst()->get('CommentsNotifications', 'email_sender');
 		if(!empty($comment->Email)) {
 			$email->setFrom($comment->Email);
 			$email->addCustomHeader ('Reply-To', $comment->Email);
 		} else {
-			$email->setFrom(CommentsNotifications::$email_sender);
+			$email->setFrom($sender);
 		}
-		$email->addCustomHeader('X-Sender', CommentsNotifications::$email_sender);
-		$email->addCustomHeader('Sender', CommentsNotifications::$email_sender);
+		$email->addCustomHeader('X-Sender', $sender);
+		$email->addCustomHeader('Sender', $sender);
 		
 		// Send
 		$email->send();

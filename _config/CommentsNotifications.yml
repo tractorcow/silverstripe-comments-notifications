@@ -1,0 +1,17 @@
+CommentsNotifications:
+  recipient: 'SiteConfig'
+  only_unmoderated: false
+  email_template: 'CommentNotificationsEmail'
+  email_sender: 'noreply@silverstripe.org'
+  email_subject: 'New comment notification'
+CommentingController:
+  extensions:
+    - 'CommentingControllerNotificationsExtension'
+SiteConfig:
+  extensions:
+    - 'CommentsNotificationsExtension'
+    - 'SiteConfigCommentsNotificationsExtension'
+SiteTree:
+  extensions:
+    - 'CommentsNotificationsExtension'
+    - 'PageCommentsNotificationsExtension'
