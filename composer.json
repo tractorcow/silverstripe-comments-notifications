@@ -1,0 +1,17 @@
+{
+    "name": "tractorcow/comments-notifications",
+    "description": "Simple email notifications for comments posted against the Comments module",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "comments"],
+    "authors": [
+        {
+            "name": "Damian Mooyman",
+            "email": "damian.mooyman@gmail.com"
+        }
+    ],
+	"require":
+	{
+		"silverstripe/framework": ">=3.1",
+		"silverstripe/comments": "dev-master"
+	}
+}
