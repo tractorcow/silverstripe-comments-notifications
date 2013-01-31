@@ -22,13 +22,20 @@ This mobule provides simple email notifications for page comments
 
 ## Configuration
 
-Set CommentsNotifications::$recipient to one of
+Using the Config set the "recipient" attribute of "CommentsNotifications" class to one of:
 
  * SiteConfig (configure the email under settings globally)
  * Page (configure the recipient per page)
  * Admin (uses the admin email address)
  * Disabled
  * any email address (use this explicit email address)
+
+E.g. MyProject.yaml
+
+```yaml
+CommentsNotifications:
+  recipient: 'Page'
+```
 
 ## Need more help?
 
