@@ -37,6 +37,21 @@ CommentsNotifications:
   recipient: 'Page'
 ```
 
+## Extending
+
+To hook into the outgoing email (in order to customise the template) you can 
+extend CommentingController with an extending class with a function updateEmail
+
+```php
+class EmailSenderExtension extends Extension {
+	public function updateEmail(Email &$email) {
+		$email->populateTemplate(array(
+			'SiteConfig' => SiteConfig::current_site_config()
+		));
+	}
+}
+```
+
 ## Need more help?
 
 Message or email me at damian.mooyman@gmail.com or, well, read the code!

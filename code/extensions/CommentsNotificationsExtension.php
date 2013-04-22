@@ -4,7 +4,7 @@
  * @author Damian Mooyman
  */
 class CommentsNotificationsExtension extends DataExtension {
-	static $db = array(
+	private static $db = array(
 		'CommentNotificationEmail' => 'Varchar(255)'
 	);
 }

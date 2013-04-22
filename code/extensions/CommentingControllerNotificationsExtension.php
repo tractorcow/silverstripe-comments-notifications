@@ -38,6 +38,8 @@ class CommentingControllerNotificationsExtension extends Extension {
 		$email->addCustomHeader('X-Sender', $sender);
 		$email->addCustomHeader('Sender', $sender);
 		
+		$this->owner->extend('updateEmail', $email);
+		
 		// Send
 		$email->send();
 	}
