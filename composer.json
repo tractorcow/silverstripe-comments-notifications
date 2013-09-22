@@ -15,7 +15,7 @@
     "require":
     {
         "silverstripe/framework": "3.1.*",
-        "silverstripe/comments": "dev-master"
+        "silverstripe/comments": "*"
     },
     "extra": {
         "installer-name": "comments-notifications"
